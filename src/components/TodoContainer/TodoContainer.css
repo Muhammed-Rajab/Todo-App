@@ -1,0 +1,11 @@
+.todo-container {
+    margin-top: 2rem;
+    min-height: 70%;
+    height: 50vh;
+    max-height: fit-content;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding-bottom: 1rem;
+}
