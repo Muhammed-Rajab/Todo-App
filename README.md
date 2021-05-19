@@ -1,3 +1,3 @@
-# Todo For Chrome
+# Todo For procrastinators
 
-_A simple todo extension for chrome-based browsers_
+A simple todo-app made using React.js
