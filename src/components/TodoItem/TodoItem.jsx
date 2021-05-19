@@ -2,12 +2,8 @@ import React from "react";
 import "./TodoItem.css";
 import { ReactComponent as DeleteLogo } from "./icons/x-square.svg";
 import { ReactComponent as EditLogo } from "./icons/edit.svg";
-import EditModal from "../EditModal/EditModal";
 
-const TodoItem = ({ todo, deleteTodo, index, editTodo }) => {
-  const editMode = () => {
-    console.log(todo, index);
-  };
+const TodoItem = ({ todo, deleteTodo, index, setEditMode }) => {
   return (
     <div className="todo-item-container">
       <div className="todo-item-wrapper">
@@ -21,8 +17,10 @@ const TodoItem = ({ todo, deleteTodo, index, editTodo }) => {
             size={18}
             className="edit-btn"
             onClick={() => {
-              editMode(todo, index);
-              // editTodo(1, "Learn React.js");
+              setEditMode({
+                title: todo.title,
+                idx: index,
+              });
             }}
           />
           <DeleteLogo

@@ -9,7 +9,11 @@ const InpBox = ({ addTodo }) => {
         onClick={() => {
           let todo = document.querySelector(".inp-box");
           if (todo.value) {
-            addTodo(todo.value, "2021-05-13");
+            let d = new Date();
+            addTodo(
+              todo.value,
+              `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`
+            );
             todo.value = "";
           }
         }}

@@ -1,9 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 .modal-wrapper {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.562);
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.356);
     z-index: 10;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.modal {}
+.modal {
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(22, 20, 20);
+    border-radius: 15px;
+    width: fit-content;
+    padding: 1rem 3rem;
+    flex-direction: column;
+    row-gap: .75rem;
+}
+
+hr {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.heading-wrapper {
+    width: 100%;
+}
+
+.edit-todo-wrapper {
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.editInput {
+    border: 1px solid white;
+    outline: none;
+    min-width: 250px;
+    min-height: 5rem;
+    border-radius: 7px;
+    color: white;
+    background: transparent;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 1.25rem;
+}
+
+.editInput:active,
+.editInput:focus {
+    border: 1px solid white;
+    outline: none;
+}
+
+.saveChanges {
+    width: 80%;
+    padding: .75rem 1rem;
+    border: 2px solid #D64D4D;
+    background: transparent;
+    border-radius: 10px;
+    color: #D64D4D;
+    font-weight: 700;
+    transition: all .2s;
+    justify-self: center;
+    height: fit-content;
+}
+
+.saveChanges:hover {
+    background-color: #D64D4D;
+    color: white;
+}

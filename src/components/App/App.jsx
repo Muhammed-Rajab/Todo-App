@@ -1,39 +1,48 @@
 import "./App.css";
 import InpBox from "../InpBox/InpBox";
 import TodoContainer from "../TodoContainer/TodoContainer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import EditModal from "../EditModal/EditModal";
 
 function App() {
-  const [todoList, updateTodo] = useState([
-    {
-      title: "Learn React.js",
-      added: "2021-05-15",
-    },
-    {
-      title: "Learn Django",
-      added: "2021-05-15",
-    },
-    {
-      title: "Do workout",
-      added: "2021-05-15",
-    },
-  ]);
+  const handleLocalStorage = () => {
+    if (localStorage.getItem("todoList")) {
+    } else localStorage.setItem("todoList", "[]");
+    return localStorage.getItem("todoList");
+  };
+
+  const [todoList, updateTodo] = useState(JSON.parse(handleLocalStorage()));
+
+  useEffect(() => {
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+  }, [todoList]);
   const addTodo = (title, added) => {
     updateTodo([{ title, added }, ...todoList]);
   };
 
   const deleteTodo = (idx) => {
-    console.log("Deleting", idx, "th Todo");
     updateTodo(
       todoList.filter((_, i) => {
         if (i !== idx) return todoList[i];
+        return null;
       })
     );
   };
 
-  const editTodo = (idx, title, date) => {
-    console.log(`Editing ${idx} todo to ${title}`);
+  const editTodo = (index, newTitle) => {
+    updateTodo(
+      todoList.filter((e, idx) => {
+        if (idx === index) {
+          e.title = newTitle;
+        }
+        return e;
+      })
+    );
+    setEditMode();
   };
+
+  const [editMode, setEditMode] = useState();
+
   return (
     <div className="">
       <InpBox addTodo={addTodo} />
@@ -41,7 +50,16 @@ function App() {
         todoList={todoList}
         deleteTodo={deleteTodo}
         editTodo={editTodo}
+        setEditMode={setEditMode}
       />
+      {editMode ? (
+        <EditModal
+          idx={editMode.idx}
+          title={editMode.title}
+          editTodo={editTodo}
+          setEditMode={setEditMode}
+        />
+      ) : null}
     </div>
   );
 }
