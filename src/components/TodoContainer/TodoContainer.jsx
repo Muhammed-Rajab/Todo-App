@@ -3,7 +3,13 @@ import "./TodoContainer.css";
 import TodoItem from "../TodoItem/TodoItem";
 import NoItem from "../NoItem/NoItem";
 
-const TodoContainer = ({ todoList, deleteTodo, editTodo, setEditMode }) => {
+const TodoContainer = ({
+  todoList,
+  deleteTodo,
+  editTodo,
+  setEditMode,
+  checked,
+}) => {
   return (
     <div className="todo-container">
       {todoList.length > 0 ? (
@@ -16,6 +22,7 @@ const TodoContainer = ({ todoList, deleteTodo, editTodo, setEditMode }) => {
               deleteTodo={deleteTodo}
               editTodo={editTodo}
               setEditMode={setEditMode}
+              checked={checked}
             />
           );
         })

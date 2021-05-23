@@ -16,8 +16,8 @@ function App() {
   useEffect(() => {
     localStorage.setItem("todoList", JSON.stringify(todoList));
   }, [todoList]);
-  const addTodo = (title, added) => {
-    updateTodo([{ title, added }, ...todoList]);
+  const addTodo = (title, added, checked = false) => {
+    updateTodo([{ title, added, checked }, ...todoList]);
   };
 
   const deleteTodo = (idx) => {
@@ -41,6 +41,14 @@ function App() {
     setEditMode();
   };
 
+  const checked = (index, checked) => {
+    updateTodo(
+      todoList.filter((e, idx) => {
+        if (idx === index) e.checked = checked;
+        return e;
+      })
+    );
+  };
   const [editMode, setEditMode] = useState();
 
   return (
@@ -51,6 +59,7 @@ function App() {
         deleteTodo={deleteTodo}
         editTodo={editTodo}
         setEditMode={setEditMode}
+        checked={checked}
       />
       {editMode ? (
         <EditModal
