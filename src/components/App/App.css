@@ -12,6 +12,18 @@ body {
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+/* .main-container {
+    width: 90%;
+} */
+
+#root {
+    display: contents;
 }
 
 input:focus,

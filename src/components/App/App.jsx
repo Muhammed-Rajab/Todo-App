@@ -52,7 +52,7 @@ function App() {
   const [editMode, setEditMode] = useState();
 
   return (
-    <div className="">
+    <div className="main-container">
       <InpBox addTodo={addTodo} />
       <TodoContainer
         todoList={todoList}
